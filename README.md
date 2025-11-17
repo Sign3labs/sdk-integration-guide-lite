@@ -8,7 +8,7 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
 ### Using Project Level Gradle Dependency
 
 1. **Add Sign3SDK to the Dependency Using JFrog**
-   - Open your project level `build.gradle` file and add the following line to the dependencies block. Please collect the **username** and **password** from credentials documents.
+   - Open your project level `build.gradle or settings.gradle` file and add the following line to the dependencies block. Please collect the **username** and **password** from credentials documents.
 
      ```groovy
       repositories {
@@ -27,9 +27,8 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
       }
       ```
 2. **Add Sign3SDK Dependency Using Local Maven Repository**
-
-   - Add this to pull the dependency from your local Maven folder inside the project
-   - Inside your project, the folder structure must be: YourProjectFile/app/<foldername>/com/sign3/intelligence/intelligence-playstore-lite/<version>/
+   - Open your project-level `build.gradle or settings.gradle` file and add the following line to the dependencies block to pull the dependency from your local Maven folder inside the project.
+   - Inside your project, the folder structure must be: YourProjectFile/app/local-maven-repo/com/sign3/intelligence/intelligence-playstore-lite/<[latest_version](https://github.com/Sign3labs/sdk-integration-guide/tree/main?tab=readme-ov-file#changelog)>/
 
      ```groovy
       repositories {
@@ -38,7 +37,7 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
           maven { url 'https://jitpack.io' }
 
           maven {
-             url uri("${rootDir}/app/<foldername>")
+             url uri("${rootDir}/app/local-maven-repo")
           }
       }
       ```
