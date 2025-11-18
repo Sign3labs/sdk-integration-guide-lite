@@ -42,18 +42,16 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
       }
       ```
 
-2. **Using App Level Gradle Dependency – Add Sign3SDK to the Dependency Block**
-   - Open your app's `build.gradle` file and add the following line to the dependencies block.
+2. **Add Sign3SDK Dependency in App-Level Gradle**
 
      ```groovy
      dependencies {
          implementation 'com.sign3.intelligence:intelligence-playstore-lite:4.x.x'
      }
      ```
-   - For the most recent latest version, connect with Sign3.
    - Checkout the [latest_version](https://github.com/Sign3labs/sdk-integration-guide/tree/main?tab=readme-ov-file#changelog)
 
-3. **After adding the dependency, sync your project with Gradle files to ensure the library is properly integrated.**
+4. **After adding the dependency, sync your project with Gradle files to ensure the library is properly integrated.**
 
 <br>
 
@@ -78,8 +76,9 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
 2. Use the ClientID and Client Secret shared with the credentials document.
 3. The SDK require a minimum SDK version of 23 if your app is targeting below this version must enclose Sign3 API calls within conditional checks.
 
-> **⚠️ Note**  
-> Add the `Sign3Intelligence.stop()` method as the first line in the `onCreate()` method after super.onCreate() of the Application class, before any other initialization code as shown.
+
+> **⚠️ Note**    
+> *Add the `Sign3Intelligence.stop()` method as the first line in the `onCreate()` method after super.onCreate() of the Application class, before any other initialization code as shown.*
 
 ### For Kotlin
 
