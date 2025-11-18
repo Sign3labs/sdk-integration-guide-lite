@@ -8,7 +8,7 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
 1. **Configure Project-Level Repository (JFrog OR Local Maven)**
    
    **Option A - Using JFrog Repository**
-   - Open your project level `build.gradle or settings.gradle` file and add the following line to the dependencies block. Please collect the **username** and **password** from credentials documents.
+   - Open your project level `build.gradle or settings.gradle` file and add the following line to the repositories block. Please collect the **username** and **password** from credentials documents.
 
      ```groovy
       repositories {
