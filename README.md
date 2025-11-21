@@ -94,6 +94,7 @@ override fun onCreate() {
         val options = Options.Builder()
             .setClientId("<SIGN3_CLIENT_ID>")
             .setClientSecret("<SIGN3_CLIENT_SECRET>")
+            .setSSLPinning(true) // Optional: If you want SSL pinning in API calls, default value is false.
             .setEnvironment(Options.ENV_PROD) // For Prod: Options.ENV_PROD, For Dev: Options.ENV_DEV
             .build()
 
@@ -119,6 +120,7 @@ public void onCreate() {
     Options options = new Options.Builder()
             .setClientId("<SIGN3_CLIENT_ID>")
             .setClientSecret("<SIGN3_CLIENT_SECRET>")
+            .setSSLPinning(true) // Optional: If you want SSL pinning in API calls, default value is false.
             .setEnvironment(Options.ENV_PROD) // For Prod: Options.ENV_PROD, For Dev: Options.ENV_DEV
             .build();
 
@@ -276,6 +278,7 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 ```response
 {
     "requestId": "403ad427-5018-47b9-b6e8-790e17a78201",
+    "sessionId": "233sd769-9367-39h9-b9e8-650eb6e87820",
     "newDevice": false,
     "deviceId": "43fccb70-d64a-4c32-a251-f07c082d7034",
     "vpn": false,
@@ -397,11 +400,13 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
-### 4.0.3
+### 4.0.5
+ - Added multiple new signals like debugger attached, usb/wireless debugging, etc.
+ - Now you can enable/disable SSL pinning through Options.
  - Improved Location Accuracy.
  - Added permission related signals.
+### 4.0.3
  - Minor bug fixes and improvements.
- - Introduced lite version of sdk.
 ### 4.0.2
  - Added AIRPLANE mode signal.
  - Fixed Android Keystore Exception bug found in some devices.
