@@ -430,9 +430,13 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
  - Added eSim detection: SDK now provides eSim detection at a particular sim slot directly in its response.
  - Added accessibility signals: SDK now captures additional device signals related to active accessibility services (when enabled) to strengthen risk/fraud detection.
  - Improved Hooking signal detection and reduce false positives.
- - Improved ANR handling from native code.
  - Enhanced error handling in the sdk thereby improving stability.
  - Made the sdk integration easier by removing the mandatory .stop() check.
+### 4.0.6
+ - Optimised file read processes.
+ - Fixed crash issue on android versions 6 & 7.
+ - Improved sdk stability on low end devices.
+ - Improved coverage of dangerous packages.
 ### 4.0.5
  - Added multiple new signals like debugger attached, usb/wireless debugging, etc.
  - Now you can enable/disable SSL pinning through Options.
