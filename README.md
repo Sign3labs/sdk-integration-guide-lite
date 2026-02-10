@@ -76,18 +76,11 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
 2. Use the ClientID and Client Secret shared with the credentials document.
 3. The SDK require a minimum SDK version of 23 if your app is targeting below this version must enclose Sign3 API calls within conditional checks.
 
-
-> **⚠️ Note**    
-> *Add the `Sign3Intelligence.stop()` method as the first line in the `onCreate()` method after super.onCreate() of the Application class, before any other initialization code as shown.*
-
 ### For Kotlin
 
 ```kotlin
 override fun onCreate() {
     super.onCreate()
-
-    // Note: Please add this line just after the super.onCreate() in the Application class to avoid crashes.
-    if (Sign3Intelligence.stop()) return
     
     // Other initialisation code
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -112,9 +105,6 @@ override fun onCreate() {
 @Override
 public void onCreate() {
     super.onCreate();
-
-    // Note: Please add this line just after the super.onCreate() in the Application class to avoid crashes.
-    if (Sign3Intelligence.Companion.stop()) return;
 
     // Other initialisation code
     Options options = new Options.Builder()
@@ -300,6 +290,33 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
         "difansd23r32",
         "2390ksdfaksd"
     ],
+     "appliedRules": {
+        "rules": {
+            "102 : Screen mirrored": 0,
+            "105 : Unusual Behaviour": "",
+            "109 : Transaction into black listed account": "",
+            "110 : Blacklist phone number": "",
+            "55 : VPN enabled": 0,
+            "58 : Remote access apps installed": "",
+            "6 : Professional profiles exists": 0,
+            "62 : account takeover high risk": 0,
+            "65 : multi carding high risk": 0,
+            "67 : account takeover medium risk": 0,
+            "68 : multi carding medium risk": 0,
+            "75 : social media account count more than 5": 0,
+            "77 : Users velocity": 0,
+            "91 : Money mule pincode": 0,
+            "92 : Blacklisted ip": 0,
+            "93 : More than 4 profiles associated with the device": 0,
+            "94 : Device identifiers changed": 0,
+            "95 : History of factory reset": 0,
+            "96 : More than 80 sims used": 0,
+            "97 : Phone number is not vintage": 0,
+            "98 : Email is not vintage": 0,
+            "99 : App is tampered": 50
+        },
+        "totalScore": 50.0
+    },
     "gpsLocation": {
         "address": "F2620, Block F, Sushant Lok III, Sector 57, Gurugram, Haryana 122011, India",
         "adminArea": "Haryana",
@@ -324,11 +341,18 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
         "longitude": 77.19999695
     },
     "simInfo": {
-        "simIds": [
+         "simIds": [
             {
+                "id": 1,
                 "simSlotIndex": 0,
-                "carrierName": "Android",
-                "id": 1
+                "carrierName": "JIO 4G | Jio",
+                "eSim": false
+            },
+            {
+                "id": 3,
+                "simSlotIndex": 1,
+                "carrierName": "airtel",
+                "eSim": true
             }
         ],
         "totalSimUsed": 10
@@ -396,10 +420,23 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 | deviceMeta                | object             | Contains all device-related information such as brand, model, screen resolution, total storage, etc.                                                                                                                                                                                                                                                                                       | {}                        |
 | appAnalytics              | object             | An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device. | {} |
 | additionalData            | object             | Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.                                                                                                                                                                                     | {} |
+| appliedRules            | object             | Returns the list of applied rules alongside the decision output, enabling the app to take immediate action (e.g., allow, warn, block) based on the exact rules fired.                                                                                                                                                                                     | {} |
 
 <br>
 
 ## Changelog
+### 4.0.7
+ - The SDK now returns the list of applied rules alongside the decision output, enabling the app to take immediate action (e.g., allow, warn, block) based on the exact rules fired.
+ - Added eSim detection: SDK now provides eSim detection at a particular sim slot directly in its response.
+ - Added accessibility signals: SDK now captures additional device signals related to active accessibility services (when enabled) to strengthen risk/fraud detection.
+ - Improved Hooking signal detection and reduce false positives.
+ - Enhanced error handling in the sdk thereby improving stability.
+ - Made the sdk integration easier by removing the mandatory .stop() check.
+### 4.0.6
+ - Optimised file read processes.
+ - Fixed crash issue on android versions 6 & 7.
+ - Improved sdk stability on low end devices.
+ - Improved coverage of dangerous packages.
 ### 4.0.5
  - Added multiple new signals like debugger attached, usb/wireless debugging, etc.
  - Now you can enable/disable SSL pinning through Options.
