@@ -448,6 +448,18 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
+### 4.1.0
+ - Improved SDK security by moving SHA-256 and legacy IVs from plaintext resources into native libintelligence.so with runtime assembly and secure fallback handling.
+ - Updated encryption/decryption flow to use SHA-256 with new config and IV support.
+ - Refactored SDK error handling by replacing multiple try/catch blocks with runCatching.
+ - Optimized location handling with shared LocationCache support for GPS and mock-location detectors.
+ - Added TTL-based config refresh and improved ConfigManager.init() flow to prevent redundant API calls and duplicate initialization.
+ - Improved mock-location detection.
+ - Added support for fetching MAC address lists.
+ - Improved Play Integrity and app integrity request handling with new request/session fields and session ID updates.
+ - Removed unused location permissions (ACCESS_COARSE_LOCATION and ACCESS_FINE_LOCATION) from the SDK manifest.
+ - Updated coroutine usage and dispatcher handling for better background task management.
+ - Declared ACCESS_BACKGROUND_LOCATION permission in the demo application.
 ### 4.0.9
  - Fixed minor background crash occuring on few Android 16 Samsung devices.
 ### 4.0.8
