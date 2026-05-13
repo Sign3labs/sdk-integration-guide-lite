@@ -448,6 +448,8 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
+### 4.0.9
+ - Fixed minor background crash occuring on few Android 16 Samsung devices.
 ### 4.0.8
  - Enhanced network risk detection capabilities to better identify insecure environments.
  - Added additional security signals to strengthen device risk assessment.
