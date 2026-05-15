@@ -61,10 +61,12 @@ The Sign3 SDK is an Android-based fraud prevention toolkit designed to assess de
 
 ```permission
 <uses-permission android:name="android.permission.INTERNET" />
-<!-- optional -->
+
+<!-- Optional: Add any of the below location permission to get the location data from sdk --> 
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<!-- Below mentioned optional permissions are taken to calculate sim affinity to the device  -->
+
+<!-- Optional: This permission is taken to calculate sim affinity to the device  -->
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 
@@ -448,6 +450,12 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
+### 4.1.0
+- Reduced SDK load during signal collection and optimized overall response time.
+- Added RASP-based geo spoofing detection.
+- Extended root detection capabilities and improved fingerprinting on rooted devices.
+- Added support for location detection in background scenarios.
+- Fixed a minor crash issue observed on Android 16 Samsung devices.
 ### 4.0.9
  - Fixed minor background crash occuring on few Android 16 Samsung devices.
 ### 4.0.8
