@@ -450,6 +450,8 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
+### 4.1.1
+- Minor stability fixes and improvements.
 ### 4.1.0
 - Reduced SDK load during signal collection and optimized overall response time.
 - Added RASP-based geo spoofing detection.
