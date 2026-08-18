@@ -224,6 +224,61 @@ String sessionId = Sign3Intelligence.getInstance(this).getSessionId()
 ```
 <br>
 
+## Behavioural Biometrics
+The Behavioural biometrics feature in the SDK captures and analyzes how users interact with your app to build a detailed behavioural profile. It monitors device sensor data, including accelerometer, gyroscope, and other sensors, as well as touch interactions such as taps, scrolls, long presses, and additional signals. By examining these patterns, the SDK can detect unusual activity and potential fraud, helping you enhance security and gain deeper insights into user behavior.
+
+### StartAnalyzingBehaviour
+
+- Use this method to start capturing the user’s behavioral data.
+- Call it at the point in your app where you want to track interactions, such as on a specific screen or during flows like login, signup, or payment.
+- The function returns a capture ID for detailed insights tracking.
+- If `startAnalyzingBehaviour()` is called multiple times without calling `stopAnalyzingBehaviour()`, the same capture ID will be returned.
+
+### For Kotlin
+```start
+val captureId = Sign3Intelligence.getInstance(this).startAnalyzingBehaviour()
+```
+
+### For Java
+ ```java
+String captureId = Sign3Intelligence.getInstance(this).startAnalyzingBehaviour()
+```
+
+### StopAnalyzingBehaviour
+
+- Use the function below to safely halt behavioural data collection.
+- Manually stop tracking at the appropriate point, such as after a user completes login, signup, or payment.
+- The SDK continues collecting data until you explicitly stop it.
+- Data collection will automatically stop if the app is killed, but it is recommended to stop it manually.
+
+```stop
+Sign3Intelligence.getInstance(this).stopAnalyzingBehaviour()
+```
+
+### Set Capture Context
+
+- Use this method to label a behavioural capture with a name and, optionally, your own custom attributes, so the session can be identified in insights and reports.
+- The capture context accepts two types of fields:
+    - name — a short label for the flow or screen being captured (e.g. login, add_card, payment). This field is required.
+    - attributes — an optional Map<String, String> of your own key–value pairs carrying extra detail about the capture- Call it before startAnalyzingBehaviour() to label the capture from the very beginning.
+- You can also set multiple contexts between startAnalyzingBehaviour() and stopAnalyzingBehaviour() and The capture context is not carried over to the next capture — call setCaptureContext() again for every capture you want labelled.
+
+```context
+Sign3Intelligence.getInstance(this).setCaptureContext("login")
+```
+
+```context
+ Sign3Intelligence.getInstance(this).setCaptureContext("add_card",
+            mapOf(
+                "card_type" to "credit",
+                "entry_mode" to "manual",
+                "attempt_number" to "2"
+            )
+)
+```
+
+
+<br>
 
 ## Fetch Device Intelligence Result
 
@@ -450,6 +505,21 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
+### 5.1.1
+ - Minor improvements and ease in integration flow.
+### 5.1.0
+ - Expanded behavioural signal coverage and improved signal accuracy for stronger fraud detection.
+ - Behavioural capture now stops automatically after a period of user inactivity.
+ - Reduced battery and CPU usage during behavioural collection.
+ - Security hardening of the SDK's internal data.
+ - Memory leaks fixed and crashes resolved on certain devices.
+ - Other minor bugs resolved and overall performance improvements.
+ - Added `setCaptureContext()` to label a behavioural capture with a name and optional custom attributes.
+### 5.0.0
+ - Analyze every user interaction for potential fraud using behavioral biometrics.
+ - Use passive analysis of keystrokes, touches, swipes, sensors, and pointer movements to proactively prevent modern fraud.
+ - ANR issues have been identified and fixed.
+ - Other minor bugs resolved and overall performance improvements.
 ### 4.1.1
 - Minor stability fixes and improvements.
 ### 4.1.0
