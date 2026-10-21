@@ -486,6 +486,8 @@ Sign3Intelligence.getInstance(this).getIntelligence(new IntelligenceListener() {
 <br>
 
 ## Changelog
+### 5.2.2
+ - Minor improvements and bug fixes.
 ### 5.2.1
  - Minor improvements and bug fixes.
 ### 5.2.0
